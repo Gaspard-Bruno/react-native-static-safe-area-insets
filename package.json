@@ -1,0 +1,25 @@
+{
+  "name": "react-native-static-safe-area-insets",
+  "title": "React Native Static Safe Area Insets",
+  "version": "1.0.0",
+  "description": "React Native package that exposed the Safe Area insets as constants",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaspard-Bruno/react-native-static-safe-area-insets.git",
+    "baseUrl": "https://github.com/Gaspard-Bruno/react-native-static-safe-area-insets"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Gaspard+Bruno",
+    "email": "hello@gaspardbruno.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md"
+}
