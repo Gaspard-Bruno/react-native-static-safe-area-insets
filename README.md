@@ -1,4 +1,4 @@
-# react-native-static-safe-area-insets
+# React Native Static Safe Area Insets
 
 React Native package that exposes the Safe Area insets as constants
 
