@@ -1,5 +1,7 @@
 # react-native-static-safe-area-insets
 
+React Native package that exposes the Safe Area insets as constants
+
 ## Getting started
 
 `$ yarn add react-native-static-safe-area-insets`
