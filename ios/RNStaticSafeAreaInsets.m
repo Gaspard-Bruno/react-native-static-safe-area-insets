@@ -1,4 +1,5 @@
 #import "RNStaticSafeAreaInsets.h"
+#import <UIKit/UIKit.h>
 
 @implementation RNStaticSafeAreaInsets
 
