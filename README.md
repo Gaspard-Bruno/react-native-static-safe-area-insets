@@ -49,4 +49,10 @@ console.log('SafeArea insets top:', StaticSafeAreaInsets.safeAreaInsetsTop)
 
 console.log('SafeArea insets bottom:', StaticSafeAreaInsets.safeAreaInsetsBottom)
 // SafeArea insets bottom: 34
+
+console.log('SafeArea insets left:', StaticSafeAreaInsets.safeAreaInsetsLeft)
+// SafeArea insets left: 44
+
+console.log('SafeArea insets right:', StaticSafeAreaInsets.safeAreaInsetsRight)
+// SafeArea insets right: 44
 ```
