@@ -25,6 +25,8 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
     final Map<String, Object> constants = new HashMap<>();
     constants.put("safeAreaInsetsTop", 0);
     constants.put("safeAreaInsetsBottom", 0);
+    constants.put("safeAreaInsetsLeft", 0);
+    constants.put("safeAreaInsetsRight", 0);
     return constants;
   }
 }
