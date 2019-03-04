@@ -1,6 +1,6 @@
 # React Native Static Safe Area Insets
 
-React Native package that exposes the Safe Area insets as constants
+React Native package that exposes the Safe Area insets as constants (iOS and Android notch are supported).
 
 ## Getting started
 
