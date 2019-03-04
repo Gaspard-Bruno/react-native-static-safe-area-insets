@@ -6,6 +6,11 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import java.util.Map;
 import java.util.HashMap;
 
+import android.view.WindowInsets;
+import android.view.View;
+import android.os.Build;
+import android.app.Activity;
+
 public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
@@ -23,10 +28,23 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
   @Override
   public Map<String, Object> getConstants() {
     final Map<String, Object> constants = new HashMap<>();
-    constants.put("safeAreaInsetsTop", 0);
-    constants.put("safeAreaInsetsBottom", 0);
-    constants.put("safeAreaInsetsLeft", 0);
-    constants.put("safeAreaInsetsRight", 0);
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+      final Activity activity = getCurrentActivity();
+      final View view = activity.getWindow().getDecorView();
+      final WindowInsets insets = view.getRootWindowInsets();
+
+      constants.put("safeAreaInsetsTop", insets.getSystemWindowInsetTop());
+      constants.put("safeAreaInsetsBottom", insets.getSystemWindowInsetBottom());
+      constants.put("safeAreaInsetsLeft", insets.getSystemWindowInsetLeft());
+      constants.put("safeAreaInsetsRight", insets.getSystemWindowInsetRight());
+    } else {
+      constants.put("safeAreaInsetsTop", 0);
+      constants.put("safeAreaInsetsBottom", 0);
+      constants.put("safeAreaInsetsLeft", 0);
+      constants.put("safeAreaInsetsRight", 0);
+    }
+
     return constants;
   }
 }
