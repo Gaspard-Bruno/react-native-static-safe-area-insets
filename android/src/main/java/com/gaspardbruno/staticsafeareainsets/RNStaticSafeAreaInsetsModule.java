@@ -29,7 +29,7 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
   public Map<String, Object> getConstants() {
     final Map<String, Object> constants = new HashMap<>();
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       final Activity activity = getCurrentActivity();
       final View view = activity.getWindow().getDecorView();
       final WindowInsets insets = view.getRootWindowInsets();
