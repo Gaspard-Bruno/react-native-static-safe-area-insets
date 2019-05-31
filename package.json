@@ -1,7 +1,7 @@
 {
   "name": "react-native-static-safe-area-insets",
   "title": "React Native Static Safe Area Insets",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "React Native package that exposed the Safe Area insets as constants",
   "main": "index.js",
   "scripts": {
