@@ -36,7 +36,7 @@ React Native package that exposes the Safe Area insets as constants (iOS and And
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      compile project(':react-native-static-safe-area-insets')
+      implementation project(':react-native-static-safe-area-insets')
   	```
 
 
