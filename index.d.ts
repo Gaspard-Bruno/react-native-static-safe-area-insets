@@ -1,8 +1,10 @@
 declare module "react-native-static-safe-area-insets" {
-  export default interface StaticSafeAreaInsets {
-    safeAreaInsetsTop: number;
-    safeAreaInsetsBottom: number;
-    safeAreaInsetsLeft: number;
-    safeAreaInsetsRight: number;
+  class StaticSafeAreaInsets {
+    public static safeAreaInsetsTop: number;
+    public static safeAreaInsetsBottom: number;
+    public static safeAreaInsetsLeft: number;
+    public static safeAreaInsetsRight: number;
   }
+
+  export default StaticSafeAreaInsets;
 }
