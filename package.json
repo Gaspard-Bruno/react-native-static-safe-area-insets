@@ -19,6 +19,7 @@
     "name": "Gaspard+Bruno",
     "email": "hello@gaspardbruno.com"
   },
+  "types": "index.d.ts",
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md"
