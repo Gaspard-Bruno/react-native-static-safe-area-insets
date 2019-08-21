@@ -58,13 +58,35 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void getSafeAreaInsets(Callback cb) {
-    Map<String, Object> constants = this._getSafeAreaInsets();
+    // Approach A
+    // Map<String, Object> constants = this._getSafeAreaInsets();
+    // WritableMap map = new WritableNativeMap();
+
+    // map.putInt("safeAreaInsetsTop", constants.safeAreaInsetsTop);
+    // map.putInt("safeAreaInsetsBottom", constants.safeAreaInsetsBottom);
+    // map.putInt("safeAreaInsetsLeft", constants.safeAreaInsetsLeft);
+    // map.putInt("safeAreaInsetsRight", constants.safeAreaInsetsRight);
+
+    // cb.invoke(map);
+
+    // Approach B
     WritableMap map = new WritableNativeMap();
 
-    map.putInt("safeAreaInsetsTop", (Integer) constants.safeAreaInsetsTop);
-    map.putInt("safeAreaInsetsBottom", (Integer) constants.safeAreaInsetsBottom);
-    map.putInt("safeAreaInsetsLeft", (Integer) constants.safeAreaInsetsLeft);
-    map.putInt("safeAreaInsetsRight", (Integer) constants.safeAreaInsetsRight);
+    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      final Activity activity = getCurrentActivity();
+      final View view = activity.getWindow().getDecorView();
+      final WindowInsets insets = view.getRootWindowInsets();
+
+      map.putInt("safeAreaInsetsTop", insets.getSystemWindowInsetTop());
+      map.putInt("safeAreaInsetsBottom", insets.getSystemWindowInsetBottom());
+      map.putInt("safeAreaInsetsLeft", insets.getSystemWindowInsetLeft());
+      map.putInt("safeAreaInsetsRight", insets.getSystemWindowInsetRight());
+    } else {
+      map.putInt("safeAreaInsetsTop", 0);
+      map.putInt("safeAreaInsetsBottom", 0);
+      map.putInt("safeAreaInsetsLeft", 0);
+      map.putInt("safeAreaInsetsRight", 0);
+    }
 
     cb.invoke(map);
   }
