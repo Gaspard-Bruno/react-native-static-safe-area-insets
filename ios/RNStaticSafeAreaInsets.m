@@ -34,4 +34,23 @@ RCT_EXPORT_MODULE()
     }
 }
 
+RCT_EXPORT_METHOD(getSafeAreaInsets:(RCTResponseSenderBlock)callback){
+    if (@available(iOS 11.0, *)) {
+        callback(@{
+                 @"top": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top),
+                 @"bottom": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom),
+                 @"left": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left),
+                 @"right": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)
+                 });
+    } else {
+      callback(@{
+                 @"top": @(0),
+                 @"bottom": @(0),
+                 @"left": @(0),
+                 @"right": @(0),
+                 });
+    }
+    
+}
+
 @end
