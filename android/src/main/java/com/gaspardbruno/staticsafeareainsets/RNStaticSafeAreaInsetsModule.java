@@ -56,6 +56,14 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void getSafeAreaInsets(Callback cb) {
-    cb.invoke(this._getSafeAreaInsets());
+    Map<String, Object> constants = this._getSafeAreaInsets();
+    WritableMap map = new WritableNativeMap();
+
+    map.putInt("safeAreaInsetsTop", (Integer) constants.safeAreaInsetsTop);
+    map.putInt("safeAreaInsetsBottom", (Integer) constants.safeAreaInsetsBottom);
+    map.putInt("safeAreaInsetsLeft", (Integer) constants.safeAreaInsetsLeft);
+    map.putInt("safeAreaInsetsRight", (Integer) constants.safeAreaInsetsRight);
+
+    cb.invoke(map);
   }
 }
