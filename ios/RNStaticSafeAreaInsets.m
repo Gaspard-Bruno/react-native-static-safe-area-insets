@@ -63,33 +63,33 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsTop:(RCTResponseSenderBlock)callback){
     if (@available(iOS 11.0, *)) {
-        callback(@[[NSNull null], @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top)]);
+        callback(@[@(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top)]);
     } else {
-        callback(@[[NSNull null], @(0)]);
+        callback(@[@(0)]);
     }
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsBottom:(RCTResponseSenderBlock)callback){
     if (@available(iOS 11.0, *)) {
-        callback(@[[NSNull null], @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom)]);
+        callback(@[@(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom)]);
     } else {
-        callback(@[[NSNull null], @(0)]);
+        callback(@[@(0)]);
     }
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsLeft:(RCTResponseSenderBlock)callback){
     if (@available(iOS 11.0, *)) {
-        callback(@[[NSNull null], @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left)]);
+        callback(@[@(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left)]);
     } else {
-        callback(@[[NSNull null], @(0)]);
+        callback(@[@(0)]);
     }
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsRight:(RCTResponseSenderBlock)callback){
     if (@available(iOS 11.0, *)) {
-        callback(@[[NSNull null], @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)]);
+        callback(@[@(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)]);
     } else {
-        callback(@[[NSNull null], @(0)]);
+        callback(@[@(0)]);
     }
 }
 
