@@ -29,65 +29,33 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
 
   @Override
   public Map<String, Object> getConstants() {
+    return this._getSafeAreaInsets();
+  }
+
+  private Map<String, Object> _getSafeAreaInsets() {
     final Map<String, Object> constants = new HashMap<>();
 
-    constants.put("safeAreaInsetsTop", this._getSafeAreaInsetsTop());
-    constants.put("safeAreaInsetsBottom", this._getSafeAreaInsetsBottom());
-    constants.put("safeAreaInsetsLeft", this._getSafeAreaInsetsLeft());
-    constants.put("safeAreaInsetsRight", this._getSafeAreaInsetsRight());
+    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      final Activity activity = getCurrentActivity();
+      final View view = activity.getWindow().getDecorView();
+      final WindowInsets insets = view.getRootWindowInsets();
+
+      constants.put("safeAreaInsetsTop", insets.getSystemWindowInsetTop());
+      constants.put("safeAreaInsetsBottom", insets.getSystemWindowInsetBottom());
+      constants.put("safeAreaInsetsLeft", insets.getSystemWindowInsetLeft());
+      constants.put("safeAreaInsetsRight", insets.getSystemWindowInsetRight());
+    } else {
+      constants.put("safeAreaInsetsTop", 0);
+      constants.put("safeAreaInsetsBottom", 0);
+      constants.put("safeAreaInsetsLeft", 0);
+      constants.put("safeAreaInsetsRight", 0);
+    }
 
     return constants;
   }
 
-  private float _getSafeAreaInsetsTop() {
-    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return insets.getSystemWindowInsetTop();
-    } else {
-      return 0;
-    }
-  }
-
-  private float _getSafeAreaInsetsBottom() {
-    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return insets.getSystemWindowInsetBottom();
-    } else {
-      return 0;
-    }
-  }
-
-  private float _getSafeAreaInsetsLeft() {
-    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return insets.getSystemWindowInsetLeft();
-    } else {
-      return 0;
-    }
-  }
-
-  private float _getSafeAreaInsetsRight() {
-    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return insets.getSystemWindowInsetRight();
-    } else {
-      return 0;
-    }
-  }
-
   @ReactMethod
-  public float getSafeAreaInsetsTop(Callback cb) {
-    cb.invoke(this._getSafeAreaInsetsTop());
-  }
-
-  @ReactMethod
-  public float getSafeAreaInsetsBottom(Callback cb) {
-    cb.invoke(this._getSafeAreaInsetsBottom());
-  }
-
-  @ReactMethod
-  public float getSafeAreaInsetsLeft(Callback cb) {
-    cb.invoke(this._getSafeAreaInsetsLeft());
-  }
-
-  @ReactMethod
-  public float getSafeAreaInsetsRight(Callback cb) {
-    cb.invoke(this._getSafeAreaInsetsRight());
+  public Map<String, Object> getSafeAreaInsets(Callback cb) {
+    cb.invoke(this._getSafeAreaInsets());
   }
 }
