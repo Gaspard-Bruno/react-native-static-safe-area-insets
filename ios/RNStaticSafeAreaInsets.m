@@ -22,7 +22,11 @@ RCT_EXPORT_MODULE()
                  @"safeAreaInsetsTop": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top),
                  @"safeAreaInsetsBottom": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom),
                  @"safeAreaInsetsLeft": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left),
-                 @"safeAreaInsetsRight": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)
+                 @"safeAreaInsetsRight": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right),
+                 @"getSafeAreaInsetsTop": @(self.getSafeAreaInsetsTop),
+                 @"getSafeAreaInsetsBottom": @(self.getSafeAreaInsetsBottom),
+                 @"getSafeAreaInsetsLeft": @(self.getSafeAreaInsetsLeft),
+                 @"getSafeAreaInsetsRight": @(self.getSafeAreaInsetsRight)
                  };
     } else {
         return @{
@@ -30,27 +34,48 @@ RCT_EXPORT_MODULE()
                  @"safeAreaInsetsBottom": @(0),
                  @"safeAreaInsetsLeft": @(0),
                  @"safeAreaInsetsRight": @(0),
+                 @"getSafeAreaInsetsTop": @(self.getSafeAreaInsetsTop),
+                 @"getSafeAreaInsetsBottom": @(self.getSafeAreaInsetsBottom),
+                 @"getSafeAreaInsetsLeft": @(self.getSafeAreaInsetsLeft),
+                 @"getSafeAreaInsetsRight": @(self.getSafeAreaInsetsRight)
                  };
     }
 }
 
-RCT_EXPORT_METHOD(getSafeAreaInsets:(RCTResponseSenderBlock)callback){
+- (NSNumber*) getSafeAreaInsetsTop
+{
     if (@available(iOS 11.0, *)) {
-        callback(@{
-                 @"top": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top),
-                 @"bottom": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom),
-                 @"left": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left),
-                 @"right": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)
-                 });
+        return @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top)
     } else {
-      callback(@{
-                 @"top": @(0),
-                 @"bottom": @(0),
-                 @"left": @(0),
-                 @"right": @(0),
-                 });
+        return @(0);
     }
-    
+}
+
+- (NSNumber*) getSafeAreaInsetsBottom
+{
+    if (@available(iOS 11.0, *)) {
+        return @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom)
+    } else {
+        return @(0);
+    }
+}
+
+- (NSNumber*) getSafeAreaInsetsLeft
+{
+    if (@available(iOS 11.0, *)) {
+        return @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left)
+    } else {
+        return @(0);
+    }
+}
+
+- (NSNumber*) getSafeAreaInsetsRight
+{
+    if (@available(iOS 11.0, *)) {
+        return @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)
+    } else {
+        return @(0);
+    }
 }
 
 @end

@@ -1,6 +1,5 @@
 package com.gaspardbruno.staticsafeareainsets;
 
-import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -51,25 +50,38 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void getSafeAreaInsets(Callback cb) {
-    final Map<String, Object> constants = new HashMap<>();
-
+  public float getSafeAreaInsetsTop() {
     if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      final Activity activity = getCurrentActivity();
-      final View view = activity.getWindow().getDecorView();
-      final WindowInsets insets = view.getRootWindowInsets();
-
-      constants.put("top", insets.getSystemWindowInsetTop());
-      constants.put("bottom", insets.getSystemWindowInsetBottom());
-      constants.put("left", insets.getSystemWindowInsetLeft());
-      constants.put("right", insets.getSystemWindowInsetRight());
+      return insets.getSystemWindowInsetTop();
     } else {
-      constants.put("top", 0);
-      constants.put("bottom", 0);
-      constants.put("left", 0);
-      constants.put("right", 0);
+      return 0;
     }
+  }
 
-    cb.invoke(constants);
+  @ReactMethod
+  public float getSafeAreaInsetsBottom() {
+    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      return insets.getSystemWindowInsetBottom();
+    } else {
+      return 0;
+    }
+  }
+
+  @ReactMethod
+  public float getSafeAreaInsetsLeft() {
+    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      return insets.getSystemWindowInsetLeft();
+    } else {
+      return 0;
+    }
+  }
+
+  @ReactMethod
+  public float getSafeAreaInsetsRight() {
+    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      return insets.getSystemWindowInsetRight();
+    } else {
+      return 0;
+    }
   }
 }
