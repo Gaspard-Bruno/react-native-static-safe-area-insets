@@ -1,5 +1,6 @@
 package com.gaspardbruno.staticsafeareainsets;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -30,27 +31,15 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
   public Map<String, Object> getConstants() {
     final Map<String, Object> constants = new HashMap<>();
 
-    if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      final Activity activity = getCurrentActivity();
-      final View view = activity.getWindow().getDecorView();
-      final WindowInsets insets = view.getRootWindowInsets();
-
-      constants.put("safeAreaInsetsTop", insets.getSystemWindowInsetTop());
-      constants.put("safeAreaInsetsBottom", insets.getSystemWindowInsetBottom());
-      constants.put("safeAreaInsetsLeft", insets.getSystemWindowInsetLeft());
-      constants.put("safeAreaInsetsRight", insets.getSystemWindowInsetRight());
-    } else {
-      constants.put("safeAreaInsetsTop", 0);
-      constants.put("safeAreaInsetsBottom", 0);
-      constants.put("safeAreaInsetsLeft", 0);
-      constants.put("safeAreaInsetsRight", 0);
-    }
+    constants.put("safeAreaInsetsTop", this._getSafeAreaInsetsTop());
+    constants.put("safeAreaInsetsBottom", this._getSafeAreaInsetsBottom());
+    constants.put("safeAreaInsetsLeft", this._getSafeAreaInsetsLeft());
+    constants.put("safeAreaInsetsRight", this._getSafeAreaInsetsRight());
 
     return constants;
   }
 
-  @ReactMethod
-  public float getSafeAreaInsetsTop() {
+  private float _getSafeAreaInsetsTop() {
     if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       return insets.getSystemWindowInsetTop();
     } else {
@@ -58,8 +47,7 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public float getSafeAreaInsetsBottom() {
+  private float _getSafeAreaInsetsBottom() {
     if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       return insets.getSystemWindowInsetBottom();
     } else {
@@ -67,8 +55,7 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public float getSafeAreaInsetsLeft() {
+  private float _getSafeAreaInsetsLeft() {
     if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       return insets.getSystemWindowInsetLeft();
     } else {
@@ -76,12 +63,31 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public float getSafeAreaInsetsRight() {
+  private float _getSafeAreaInsetsRight() {
     if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       return insets.getSystemWindowInsetRight();
     } else {
       return 0;
     }
+  }
+
+  @ReactMethod
+  public float getSafeAreaInsetsTop(Callback cb) {
+    cb.invoke(this._getSafeAreaInsetsTop());
+  }
+
+  @ReactMethod
+  public float getSafeAreaInsetsBottom(Callback cb) {
+    cb.invoke(this._getSafeAreaInsetsBottom());
+  }
+
+  @ReactMethod
+  public float getSafeAreaInsetsLeft(Callback cb) {
+    cb.invoke(this._getSafeAreaInsetsLeft());
+  }
+
+  @ReactMethod
+  public float getSafeAreaInsetsRight(Callback cb) {
+    cb.invoke(this._getSafeAreaInsetsRight());
   }
 }
