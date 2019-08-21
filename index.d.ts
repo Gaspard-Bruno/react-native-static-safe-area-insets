@@ -4,7 +4,7 @@ declare module "react-native-static-safe-area-insets" {
     public static safeAreaInsetsBottom: number;
     public static safeAreaInsetsLeft: number;
     public static safeAreaInsetsRight: number;
-    getSafeAreaInsets() : {
+    public static getSafeAreaInsets(): {
       top: number;
       bottom: number;
       left: number;
