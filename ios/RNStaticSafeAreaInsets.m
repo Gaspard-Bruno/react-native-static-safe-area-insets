@@ -17,29 +17,12 @@ RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport
 {
-    if (@available(iOS 11.0, *)) {
-        return @{
-                 @"safeAreaInsetsTop": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top),
-                 @"safeAreaInsetsBottom": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom),
-                 @"safeAreaInsetsLeft": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left),
-                 @"safeAreaInsetsRight": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right),
-                 @"getSafeAreaInsetsTop": self.getSafeAreaInsetsTop,
-                 @"getSafeAreaInsetsBottom": self.getSafeAreaInsetsBottom,
-                 @"getSafeAreaInsetsLeft": self.getSafeAreaInsetsLeft,
-                 @"getSafeAreaInsetsRight": self.getSafeAreaInsetsRight
-                 };
-    } else {
-        return @{
-                 @"safeAreaInsetsTop": @(0),
-                 @"safeAreaInsetsBottom": @(0),
-                 @"safeAreaInsetsLeft": @(0),
-                 @"safeAreaInsetsRight": @(0),
-                 @"getSafeAreaInsetsTop": self.getSafeAreaInsetsTop,
-                 @"getSafeAreaInsetsBottom": self.getSafeAreaInsetsBottom,
-                 @"getSafeAreaInsetsLeft": self.getSafeAreaInsetsLeft,
-                 @"getSafeAreaInsetsRight": self.getSafeAreaInsetsRight
-                 };
-    }
+  return @{
+            @"safeAreaInsetsTop": self.getSafeAreaInsetsTop,
+            @"safeAreaInsetsBottom": self.getSafeAreaInsetsBottom,
+            @"safeAreaInsetsLeft": self.getSafeAreaInsetsLeft,
+            @"safeAreaInsetsRight": self.getSafeAreaInsetsRight
+            };
 }
 
 - (NSNumber *) getSafeAreaInsetsTop
@@ -76,6 +59,22 @@ RCT_EXPORT_MODULE()
     } else {
         return @(0);
     }
+}
+
+RCT_EXPORT_METHOD(getSafeAreaInsetsTop:(RCTResponseSenderBlock)callback){
+ callback(@[[NSNull null], self.getSafeAreaInsetsTop()]);
+}
+
+RCT_EXPORT_METHOD(getSafeAreaInsetsBottom:(RCTResponseSenderBlock)callback){
+ callback(@[[NSNull null], self.getSafeAreaInsetsBottom()]);
+}
+
+RCT_EXPORT_METHOD(getSafeAreaInsetsLeft:(RCTResponseSenderBlock)callback){
+ callback(@[[NSNull null], self.getSafeAreaInsetsLeft()]);
+}
+
+RCT_EXPORT_METHOD(getSafeAreaInsetsRight:(RCTResponseSenderBlock)callback){
+ callback(@[[NSNull null], self.getSafeAreaInsetsRight()]);
 }
 
 @end
