@@ -62,19 +62,19 @@ RCT_EXPORT_MODULE()
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsTop:(RCTResponseSenderBlock)callback){
- callback(@[[NSNull null], self.getSafeAreaInsetsTop()]);
+ callback(@[[NSNull null], self.getSafeAreaInsetsTop]);
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsBottom:(RCTResponseSenderBlock)callback){
- callback(@[[NSNull null], self.getSafeAreaInsetsBottom()]);
+ callback(@[[NSNull null], self.getSafeAreaInsetsBottom]);
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsLeft:(RCTResponseSenderBlock)callback){
- callback(@[[NSNull null], self.getSafeAreaInsetsLeft()]);
+ callback(@[[NSNull null], self.getSafeAreaInsetsLeft]);
 }
 
 RCT_EXPORT_METHOD(getSafeAreaInsetsRight:(RCTResponseSenderBlock)callback){
- callback(@[[NSNull null], self.getSafeAreaInsetsRight()]);
+ callback(@[[NSNull null], self.getSafeAreaInsetsRight]);
 }
 
 @end
