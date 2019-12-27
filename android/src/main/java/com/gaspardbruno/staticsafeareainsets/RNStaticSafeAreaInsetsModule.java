@@ -1,7 +1,11 @@
 package com.gaspardbruno.staticsafeareainsets;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.bridge.WritableMap;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -27,6 +31,10 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
 
   @Override
   public Map<String, Object> getConstants() {
+    return this._getSafeAreaInsets();
+  }
+
+  private Map<String, Object> _getSafeAreaInsets() {
     final Map<String, Object> constants = new HashMap<>();
 
     if (getCurrentActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -46,5 +54,18 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
     }
 
     return constants;
+  }
+
+  @ReactMethod
+  public void getSafeAreaInsets(Callback cb) {
+    Map<String, Object> constants = this._getSafeAreaInsets();
+    WritableMap map = new WritableNativeMap();
+
+    map.putInt("safeAreaInsetsTop", (Integer) constants.get("safeAreaInsetsTop"));
+    map.putInt("safeAreaInsetsBottom", (Integer) constants.get("safeAreaInsetsBottom"));
+    map.putInt("safeAreaInsetsLeft", (Integer) constants.get("safeAreaInsetsLeft"));
+    map.putInt("safeAreaInsetsRight", (Integer) constants.get("safeAreaInsetsRight"));
+
+    cb.invoke(map);
   }
 }
