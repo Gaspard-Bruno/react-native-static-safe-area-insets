@@ -55,4 +55,4 @@ StaticSafeAreaInsets.getSafeAreaInsets((values) => {
 })
 ```
 
-This method is usefull for cases when you want to get the new insets when the device orientation changes.
+This method is useful for cases when you want to get the new insets when the device orientation changes.
