@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.uimanager.PixelUtil;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -42,10 +43,10 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
       final View view = activity.getWindow().getDecorView();
       final WindowInsets insets = view.getRootWindowInsets();
 
-      constants.put("safeAreaInsetsTop", insets.getSystemWindowInsetTop());
-      constants.put("safeAreaInsetsBottom", insets.getSystemWindowInsetBottom());
-      constants.put("safeAreaInsetsLeft", insets.getSystemWindowInsetLeft());
-      constants.put("safeAreaInsetsRight", insets.getSystemWindowInsetRight());
+      constants.put("safeAreaInsetsTop", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetTop()));
+      constants.put("safeAreaInsetsBottom", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetBottom()));
+      constants.put("safeAreaInsetsLeft", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetLeft()));
+      constants.put("safeAreaInsetsRight", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetRight()));
     } else {
       constants.put("safeAreaInsetsTop", 0);
       constants.put("safeAreaInsetsBottom", 0);
