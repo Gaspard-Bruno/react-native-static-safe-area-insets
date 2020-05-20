@@ -62,10 +62,10 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
     Map<String, Object> constants = this._getSafeAreaInsets();
     WritableMap map = new WritableNativeMap();
 
-    map.putInt("safeAreaInsetsTop", (Integer) constants.get("safeAreaInsetsTop"));
-    map.putInt("safeAreaInsetsBottom", (Integer) constants.get("safeAreaInsetsBottom"));
-    map.putInt("safeAreaInsetsLeft", (Integer) constants.get("safeAreaInsetsLeft"));
-    map.putInt("safeAreaInsetsRight", (Integer) constants.get("safeAreaInsetsRight"));
+    map.putInt("safeAreaInsetsTop", ((Float) constants.get("safeAreaInsetsTop")).intValue());
+    map.putInt("safeAreaInsetsBottom", ((Float) constants.get("safeAreaInsetsBottom")).intValue());
+    map.putInt("safeAreaInsetsLeft", ((Float) constants.get("safeAreaInsetsLeft")).intValue());
+    map.putInt("safeAreaInsetsRight", ((Float) constants.get("safeAreaInsetsRight")).intValue());
 
     cb.invoke(map);
   }
