@@ -1,23 +1,19 @@
 # React Native Static Safe Area Insets
 
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui)](https://github.com/Gaspard-Bruno/react-native-static-safe-area-insets/blob/main/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Gaspard-Bruno/react-native-static-safe-area-insets)](https://github.com/Gaspard-Bruno/react-native-static-safe-area-insets/graphs/commit-activity)
+
 React Native package that exposes the Safe Area insets as constants (iOS and Android notch are supported).
 
-## Getting started
+## Getting Started
 
-### React Native 0.60 or above
+### Install
 ```sh
 yarn add react-native-static-safe-area-insets
 cd ios && pod install # for iOS
 ```
 
-### React Native 0.59
-
-```sh
-yarn add react-native-static-safe-area-insets
-react-native link react-native-static-safe-area-insets
-```
-
-## Usage
+### Usage
 
 ### Constants
 ```javascript
@@ -55,4 +51,13 @@ StaticSafeAreaInsets.getSafeAreaInsets((values) => {
 })
 ```
 
-This method is useful for cases when you want to get the new insets when the device orientation changes.
+## Roadmap
+- Continue to support iOS & Android API updates
+
+## Contributing
+Pull requests are welcome! Feel free to open issues and submit PRs, we will review them and answer back as fast as possible.
+
+## 🚀 Authors
+
+- [@jpamarohorta](https://www.github.com/jpamarohorta)
+- [@CarlosUvaSilva](https://www.github.com/CarlosUvaSilva)

@@ -37,7 +37,7 @@ What kind of change does this Merge Request introduce?
 ### Related issue 📎
 
 <!-- If this MR refers to a Github issue please uncomment one of the lines below and insert the issue number -->
-<!-- Github issue [issue-XXX](https://github.com/Gaspard-Bruno/react-native-static-safe-area-insets/issues/XXX)-->
+<!-- Github [issue-XXX](https://github.com/Gaspard-Bruno/react-native-static-safe-area-insets/issues/XXX)-->
 
 ### Reviewers 👀
 
