@@ -45,19 +45,16 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
       final View view = activity.getWindow().getDecorView();
       final WindowInsets insets = view.getRootWindowInsets();
 
-      final Boolean isFullscreen = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R ?
-        view.getWindowInsetsController().getSystemBarsBehavior() == WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        :
-        view.getWindowSystemUiVisibility() == View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+      final Boolean isFullscreen = (view.getSystemUiVisibility() & View.SYSTEM_UI_FLAG_IMMERSIVE) == View.SYSTEM_UI_FLAG_IMMERSIVE;
 
-      if (isFullscreen) {
+      if (insets != null && isFullscreen) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
           final Insets insets30 = insets.getInsets(WindowInsets.Type.systemGestures());
 
-          constants.put("safeAreaInsetsTop", insets30.top);
-          constants.put("safeAreaInsetsBottom", insets30.bottom);
-          constants.put("safeAreaInsetsLeft", insets30.left);
-          constants.put("safeAreaInsetsRight", insets30.right);
+          constants.put("safeAreaInsetsTop", (float) insets30.top);
+          constants.put("safeAreaInsetsBottom", (float) insets30.bottom);
+          constants.put("safeAreaInsetsLeft", (float) insets30.left);
+          constants.put("safeAreaInsetsRight", (float) insets30.right);
         } else {
           constants.put("safeAreaInsetsTop", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetTop()));
           constants.put("safeAreaInsetsBottom", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetBottom()));
