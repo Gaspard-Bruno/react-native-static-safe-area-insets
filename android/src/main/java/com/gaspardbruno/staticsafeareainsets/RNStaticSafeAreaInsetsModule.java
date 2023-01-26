@@ -62,10 +62,10 @@ public class RNStaticSafeAreaInsetsModule extends ReactContextBaseJavaModule {
           constants.put("safeAreaInsetsRight", PixelUtil.toDIPFromPixel(insets.getSystemWindowInsetRight()));
         }
       } else {
-          constants.put("safeAreaInsetsTop", 0f);
-          constants.put("safeAreaInsetsBottom", 0f);
-          constants.put("safeAreaInsetsLeft", 0f);
-          constants.put("safeAreaInsetsRight", 0f);
+        constants.put("safeAreaInsetsTop", 0f);
+        constants.put("safeAreaInsetsBottom", 0f);
+        constants.put("safeAreaInsetsLeft", 0f);
+        constants.put("safeAreaInsetsRight", 0f);
       }
     } else {
       constants.put("safeAreaInsetsTop", 0f);
