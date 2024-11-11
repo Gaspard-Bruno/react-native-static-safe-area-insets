@@ -23,11 +23,13 @@ RCT_EXPORT_MODULE()
 - (NSDictionary *) getSafeAreaInsets
 {
     if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+        
         return @{
-            @"safeAreaInsetsTop": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.top),
-            @"safeAreaInsetsBottom": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom),
-            @"safeAreaInsetsLeft": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.left),
-            @"safeAreaInsetsRight": @(UIApplication.sharedApplication.keyWindow.safeAreaInsets.right)
+            @"safeAreaInsetsTop": @(window.safeAreaInsets.top),
+            @"safeAreaInsetsBottom": @(window.safeAreaInsets.bottom),
+            @"safeAreaInsetsLeft": @(window.safeAreaInsets.left),
+            @"safeAreaInsetsRight": @(window.safeAreaInsets.right)
         };
     } else {
         return @{

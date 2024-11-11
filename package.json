@@ -1,5 +1,5 @@
 {
-  "name": "react-native-static-safe-area-insets",
+  "name": "@nnpmai/react-native-static-safe-area-insets",
   "title": "React Native Static Safe Area Insets",
   "version": "2.2.0",
   "description": "React Native package that exposed the Safe Area insets as constants",
@@ -16,8 +16,8 @@
     "react-native"
   ],
   "author": {
-    "name": "Gaspard+Bruno",
-    "email": "hello@gaspardbruno.com"
+    "name": "nnpmai",
+    "email": "npmai.huflit@gmail.com"
   },
   "types": "index.d.ts",
   "license": "MIT",
